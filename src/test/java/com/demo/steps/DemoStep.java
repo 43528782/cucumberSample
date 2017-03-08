@@ -23,9 +23,6 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 
 
-/**
- * Created by dujuan on 3/6/17.
- */
 public class DemoStep {
 
     private WebDriver driver = DriverFactory.setDriver(DriverType.FireFox);
@@ -45,7 +42,7 @@ public class DemoStep {
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()){
             byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-            scenario.write(scenario.getName() + " scenario fails, current URL is" + driver.getCurrentUrl());
+            scenario.write(scenario.getName() + " fails, current URL is: " + driver.getCurrentUrl());
             scenario.embed(screenshot, "image/png");
         }
 

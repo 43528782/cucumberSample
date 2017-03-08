@@ -1,7 +1,6 @@
 @demo1
 Feature: Comparison of prices
 
-  #BeforeEach scenario
   Background: Navigate to TaoBao and verify prices between list page and detials page
     Given I am on Tobao page
 
