@@ -13,6 +13,7 @@ import java.util.Date;
 
 @RunWith(Cucumber.class)  //initiate run time environment for cucumber
 @CucumberOptions(
+        //using the best looking report plugin
         plugin = {"com.cucumber.listener.ExtentCucumberFormatter"},
         glue = "com.demo.steps",
         features = "src/test/resources/com.demo/",
@@ -25,7 +26,10 @@ public class runTest {
 
     @BeforeClass
     public static void  setup(){
+        //set report path
         String reportPath = String.format(REPORT_PATH, new Date());
+
+        //initial report
         ExtentCucumberFormatter.initiateExtentCucumberFormatter(new File(reportPath),false, NetworkMode.OFFLINE);
     }
 }

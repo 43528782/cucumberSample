@@ -57,5 +57,3 @@ public class DemoTest {
 
     }
 }
-
-//plugs : gherkin, cucumber for java
