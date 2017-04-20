@@ -23,29 +23,35 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 
 
-public class DemoStep {
+/**
+ * Created by dujuan on 3/6/17.
+ */
+public class SearchStep {
 
     private WebDriver driver = DriverFactory.setDriver(DriverType.FireFox);
+    //方便元素管理,实现元素公用,提高代码的可读性(封装了元素以及针对它的处理)
+    private HomePage homePage = new HomePage(driver);
 
-    private HomePage homePage= PageFactory.initElements(driver, HomePage.class);
+//    private HomePage homePage= PageFactory.initElements(driver, HomePage.class);
     private CommodityListPage commodityListPage = PageFactory.initElements(driver,CommodityListPage.class);
     private SecondListPage secondListPage = PageFactory.initElements(driver,SecondListPage.class);
     private DetailsPage detailsPage = PageFactory.initElements(driver, DetailsPage.class);
 
-
+    //增强测试稳定性的方式
     @Before
     public void beforeScenario(){
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 
     @After
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()){
             byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-            scenario.write(scenario.getName() + " fails, current URL is: " + driver.getCurrentUrl());
+            scenario.write(scenario.getName() + " scenario fails, current URL is" + driver.getCurrentUrl());
             scenario.embed(screenshot, "image/png");
         }
-
+        //清理测试现场: 删除cookies避免上次操作的参与信息影响下面的测试 以及关闭浏览器
         driver.manage().deleteAllCookies();
         driver.quit();
     }
