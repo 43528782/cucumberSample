@@ -23,9 +23,6 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 
 
-/**
- * Created by dujuan on 3/6/17.
- */
 public class SearchStep {
 
     private WebDriver driver = DriverFactory.setDriver(DriverType.FireFox);
