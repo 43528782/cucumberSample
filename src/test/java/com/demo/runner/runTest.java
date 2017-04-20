@@ -11,9 +11,8 @@ import java.io.File;
 import java.util.Date;
 
 
-@RunWith(Cucumber.class)  //initiate run time environment for cucumber
+@RunWith(Cucumber.class)
 @CucumberOptions(
-        //using the best looking report plugin
         plugin = {"com.cucumber.listener.ExtentCucumberFormatter"},
         glue = "com.demo.steps",
         features = "src/test/resources/com.demo/",
