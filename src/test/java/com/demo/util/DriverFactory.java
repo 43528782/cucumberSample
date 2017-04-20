@@ -14,11 +14,15 @@ public class DriverFactory {
     }
 
     public static WebDriver setDriver(DriverType type){
-        HashMap<DriverType , WebDriver> map = new HashMap<DriverType , WebDriver>();
-        map.put(DriverType.FireFox, new FirefoxDriver());
-        map.put(DriverType.Chrome,new ChromeDriver());
 
-        return map.get(type);
+        switch (type){
+            case FireFox:
+                return new FirefoxDriver();
+            case Chrome:
+                return new ChromeDriver();
+            default:
+                return null;
+        }
     }
 
 

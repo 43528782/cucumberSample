@@ -25,11 +25,10 @@ import static org.junit.Assert.assertEquals;
 
 public class SearchStep {
 
-    private WebDriver driver = DriverFactory.setDriver(DriverType.FireFox);
+    private WebDriver driver = DriverFactory.setDriver(DriverType.Chrome);
 
-    private HomePage homePage = new HomePage(driver);
+    private HomePage homePage = new HomePage(driver); //different implementation
 
-//    private HomePage homePage= PageFactory.initElements(driver, HomePage.class);
     private CommodityListPage commodityListPage = PageFactory.initElements(driver,CommodityListPage.class);
     private SecondListPage secondListPage = PageFactory.initElements(driver,SecondListPage.class);
     private DetailsPage detailsPage = PageFactory.initElements(driver, DetailsPage.class);
